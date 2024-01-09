@@ -5,17 +5,14 @@ const interestInput = document.getElementById("interest");
 const timeInput = document.getElementById("time");
 // Get connection to submit button
 const submitBtn = document.getElementById("submit-btn");
+// Adding event listener to button
 submitBtn.addEventListener("click", () => {
-    const loan = loanInput.value;
+    // Values need to be converted from string to number
+    const loan = Number(loanInput.value);
     console.log(loan);
-    const interest = interestInput.value;
+    const interest = Number(interestInput.value);
     console.log(interest);
-    const time = timeInput.value;
+    const time = Number(timeInput.value);
     console.log(time);
-    // Values need to be converted to number
+    // Calculate
 });
-// Adding event listener varför behövs denna??
-// loanInput.addEventListener("input", (event) => {
-//   const target = event.target as HTMLInputElement;
-//   console.log("Värde: " + target.value);
-// });

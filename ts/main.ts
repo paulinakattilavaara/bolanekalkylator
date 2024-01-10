@@ -7,14 +7,13 @@ const timeInput = document.getElementById("time") as HTMLInputElement;
 const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
 
 function calculateM(P: number, r: number, n: number): number {
-  return P * r * ((1 + r) ** n) / (((1 + r) ** n) - 1);
+  return (P * r * (1 + r) ** n) / ((1 + r) ** n - 1);
 }
-
 
 // Adding event listener to button
 submitBtn.addEventListener("click", () => {
   // Values need to be converted from string to number
-  const loan: number = Number(loanInput.value);
+  let loan: number = Number(loanInput.value);
   console.log(loan);
   const interest: number = Number(interestInput.value) / 100 / 12;
   console.log(interest);
@@ -29,14 +28,13 @@ submitBtn.addEventListener("click", () => {
   let childToRemove1;
   let childToRemove2;
 
-
-   // Check if time is greater than 50 years
-   if (time / 12 > 50) {
+  // Check if time is greater than 50 years
+  if (time / 12 > 50) {
     // console.log("The time is too long!");
-    errorMessage.innerHTML = `Återbetalningstiden är för lång!`
+    errorMessage.innerHTML = `Återbetalningstiden är för lång!`;
     document.body.appendChild(errorMessage);
-  }  else {
-    children.forEach(child => {
+  } else {
+    children.forEach((child) => {
       if (child.textContent === `Återbetalningstiden är för lång!`) {
         childToRemove1 = child;
       }
@@ -44,12 +42,12 @@ submitBtn.addEventListener("click", () => {
   }
 
   // Check if interest is over 40%
-  if ((interest * 100 * 12) > 40) {
+  if (interest * 100 * 12 > 40) {
     // console.log("The interest is too high!");
-    errorMessage2.innerHTML = `Räntan du har angett är för hög!`
+    errorMessage2.innerHTML = `Räntan du har angett är för hög!`;
     document.body.appendChild(errorMessage2);
   } else {
-    children.forEach(child => {
+    children.forEach((child) => {
       if (child.textContent === `Räntan du har angett är för hög!`) {
         childToRemove2 = child;
       }
@@ -57,27 +55,39 @@ submitBtn.addEventListener("click", () => {
   }
 
   // Calculate the monthly cost
-  const monthlyCost = calculateM(loan, interest, time).toFixed(2);
+  const monthlyCost: number = Number(
+    calculateM(loan, interest, time).toFixed(2)
+  );
 
   // Calculate the total interest fee
-  const totalInterest = loan * interest * time;
+  const totalInterest: number = loan * interest * time;
 
   // Present results to user if it passed the tests
-  if (!((interest * 100 * 12) > 40) && !(time / 12 > 50)) {
-    
-  if (childToRemove1) {
-    document.body.removeChild(childToRemove1);
-  }
+  if (!(interest * 100 * 12 > 40) && !(time / 12 > 50)) {
+    if (childToRemove1) {
+      document.body.removeChild(childToRemove1);
+    }
 
-  if (childToRemove2) {
-    document.body.removeChild(childToRemove2);
-  }
+    if (childToRemove2) {
+      document.body.removeChild(childToRemove2);
+    }
 
-  const results = document.createElement("p");
-  results.innerHTML = `
-  Din totala månadskostnad blir ${monthlyCost} kronor. <br>
-  Din totala räntekostnad över hela låneperioden blir ${totalInterest} kronor. 
+    const results = document.createElement("p");
+    results.innerHTML = `
+  Din totala månadskostnad blir ${monthlyCost} kronor.<br>
+  Din totala räntekostnad över hela låneperioden blir ${totalInterest} kronor.
+  <br><br>
   `;
-  document.body.appendChild(results);
+    document.body.appendChild(results);
+  }
+
+  // Create payment plan
+  for (let month = 1; month <= time; month++) {
+    const interestPayment = loan * interest;
+    const installment = monthlyCost - interestPayment;
+    loan -= installment;
+    const results = document.createElement("p");
+    results.innerHTML = `${month}&nbsp;&nbsp;&nbsp;&nbsp;${loan.toFixed(2)}`;
+    document.body.appendChild(results);
   }
 });

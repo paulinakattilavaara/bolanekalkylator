@@ -51,6 +51,8 @@ submitBtn.addEventListener("click", () => {
     }
     // Calculate the monthly cost
     const monthlyCost = calculateM(loan, interest, time).toFixed(2);
+    // Calculate the total interest fee
+    const totalInterest = loan * interest * time;
     // Present results to user if it passed the tests
     if (!((interest * 100 * 12) > 40) && !(time / 12 > 50)) {
         if (childToRemove1) {
@@ -60,7 +62,10 @@ submitBtn.addEventListener("click", () => {
             document.body.removeChild(childToRemove2);
         }
         const results = document.createElement("p");
-        results.innerHTML = `Din totala månadskostnad blir ${monthlyCost} kronor.`;
+        results.innerHTML = `
+  Din totala månadskostnad blir ${monthlyCost} kronor. <br>
+  Din totala räntekostnad över hela låneperioden blir ${totalInterest} kronor. 
+  `;
         document.body.appendChild(results);
     }
 });

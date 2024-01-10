@@ -17,6 +17,14 @@ submitBtn.addEventListener("click", () => {
     console.log(interest);
     const time = Number(timeInput.value) * 12;
     console.log(time);
+    // Check if time is greater than 50 years
+    if (time / 12 > 50) {
+        console.log("The time is too long!");
+    }
+    // Check if interest is over 40%
+    if ((interest * 100 * 12) > 40) {
+        console.log("The interest is too high!");
+    }
     // Calculate the monthly cost
-    console.log(calculateM(loan, interest, time));
+    console.log(calculateM(loan, interest, time).toFixed(2));
 });

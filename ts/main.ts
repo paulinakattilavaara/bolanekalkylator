@@ -57,7 +57,7 @@ submitBtn.addEventListener("click", () => {
   }
 
   // Calculate the monthly cost
-  console.log(calculateM(loan, interest, time).toFixed(2));
+  const monthlyCost = calculateM(loan, interest, time).toFixed(2);
 
   // Present results to user if it passed the tests
   if (!((interest * 100 * 12) > 40) && !(time / 12 > 50)) {
@@ -71,7 +71,7 @@ submitBtn.addEventListener("click", () => {
   }
 
   const results = document.createElement("p");
-  results.innerHTML = `NURÅ DIN LILLA RÅTTA`;
+  results.innerHTML = `Din totala månadskostnad blir ${monthlyCost} kronor.`;
   document.body.appendChild(results);
   }
 });

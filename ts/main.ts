@@ -69,7 +69,7 @@ submitBtn.addEventListener("click", () => {
         break;
       }
       const results2 = document.createElement("p");
-      results2.innerHTML = `Månad ${month}&nbsp;&nbsp;&nbsp;&nbsp;${loan.toFixed(
+      results2.innerHTML = `Månad ${month}:&nbsp;&nbsp;${loan.toFixed(
         2
       )}`;
 

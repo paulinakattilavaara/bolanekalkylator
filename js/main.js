@@ -55,7 +55,7 @@ submitBtn.addEventListener("click", () => {
                 break;
             }
             const results2 = document.createElement("p");
-            results2.innerHTML = `Månad ${month}&nbsp;&nbsp;&nbsp;&nbsp;${loan.toFixed(2)}`;
+            results2.innerHTML = `Månad ${month}:&nbsp;&nbsp;${loan.toFixed(2)}`;
             document.body.appendChild(results2);
         }
     }

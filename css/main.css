@@ -7,6 +7,7 @@
 }
 
 body {
+  background-color: rgb(237, 230, 199);
   font-family: "Inter", sans-serif;
   margin: 1.5rem;
   padding: 0.5rem;
@@ -29,6 +30,14 @@ input {
 
 #submit-btn {
   font-family: "Inter", sans-serif;
+  font-size: 1rem;  
   margin: 1rem;
   padding: 0.5rem;
+  background-color: rgb(241, 250, 189);
+  border: 1px solid gray;
+  border-radius: 8px;
+}
+
+#submit-btn:hover {
+  color: rgb(98, 97, 97);
 }

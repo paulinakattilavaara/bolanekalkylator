@@ -33,8 +33,9 @@ input {
   font-size: 1rem;  
   margin: 1rem;
   padding: 0.5rem;
-  background-color: rgb(241, 250, 189);
-  border: 1px solid gray;
+  /* background-color: rgb(241, 250, 189); */
+  background-color: #8f9772;
+  border: 1px solid rgb(68, 68, 68);
   border-radius: 8px;
 }
 

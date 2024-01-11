@@ -86,8 +86,11 @@ submitBtn.addEventListener("click", () => {
     const interestPayment = loan * interest;
     const installment = monthlyCost - interestPayment;
     loan -= installment;
-    const results = document.createElement("p");
-    results.innerHTML = `${month}&nbsp;&nbsp;&nbsp;&nbsp;${loan.toFixed(2)}`;
-    document.body.appendChild(results);
+    if (loan <= 0) {
+      break;
+    }
+    const results2 = document.createElement("p");
+    results2.innerHTML = `Månad ${month}&nbsp;&nbsp;&nbsp;&nbsp;${loan.toFixed(2)}`;
+    document.body.appendChild(results2);
   }
 });

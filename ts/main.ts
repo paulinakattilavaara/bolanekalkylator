@@ -81,7 +81,8 @@ submitBtn.addEventListener("click", () => {
 // Function to clear previous results and error messages
 function clearPreviousResults() {
   const existingResults = document.querySelectorAll("p");
+  
   existingResults.forEach(result => {
-    result.remove();
+      result.remove();
   });
 }

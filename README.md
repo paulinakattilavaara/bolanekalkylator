@@ -1,5 +1,7 @@
 # Bolånekalkylator
 
+[Se på GitHub pages](https://paulinakattilavaara.github.io/bolanekalkylator/)
+
 ## *Jag har skapat en* **bolånekalkylator** *med* **TypeScript**.      
 
 Jag har:

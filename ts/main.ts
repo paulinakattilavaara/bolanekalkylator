@@ -62,8 +62,8 @@ submitBtn.addEventListener("click", () => {
   if (!(interest * 100 * 12 > 40) && !(time / 12 > 50)) {
 
     for (let month = 1; month <= time; month++) {
-      const interestPayment = loan * interest;
-      const installment = monthlyCost - interestPayment;
+      const interestPayment: number = loan * interest;
+      const installment: number = monthlyCost - interestPayment;
       loan -= installment;
       if (loan <= 0) {
         break;

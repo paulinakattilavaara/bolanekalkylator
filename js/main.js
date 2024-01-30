@@ -10,6 +10,10 @@ function calculateM(P, r, n) {
 }
 // Adding event listener to button
 submitBtn.addEventListener("click", () => {
+    gtag('event', 'click', {
+        'event_category': 'button_click',
+        'event_label': 'calc_button'
+    });
     // Values need to be converted from string to number
     let loan = Number(loanInput.value);
     console.log(loan);
